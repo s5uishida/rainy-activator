@@ -29,7 +29,7 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		LOG.info("{} {} started.", ConfigParams.NAME, ConfigParams.VERSION);
+		LOG.info("{} {} started.", ConfigParams.getName(), ConfigParams.getVersion());
 		if (config.getCC2650()) {
 			devices.add(new CC2650(config.getClientID()));
 			LOG.info("CC2650 installed.");
@@ -57,6 +57,6 @@ public class Activator implements BundleActivator {
 			device.stop();
 			LOG.info("{} stopped.", device.getClass().getSimpleName());
 		}
-		LOG.info("{} {} stopped.", ConfigParams.NAME, ConfigParams.VERSION);
+		LOG.info("{} {} stopped.", ConfigParams.getName(), ConfigParams.getVersion());
 	}
 }
