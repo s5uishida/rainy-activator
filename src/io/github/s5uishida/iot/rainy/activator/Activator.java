@@ -12,6 +12,7 @@ import io.github.s5uishida.iot.rainy.device.IDevice;
 import io.github.s5uishida.iot.rainy.device.cc2650.CC2650;
 import io.github.s5uishida.iot.rainy.device.mhz19b.MHZ19B;
 import io.github.s5uishida.iot.rainy.device.opcua.OPCUA;
+import io.github.s5uishida.iot.rainy.device.ppd42ns.PPD42NS;
 import io.github.s5uishida.iot.rainy.util.Config;
 import io.github.s5uishida.iot.rainy.util.ConfigParams;
 
@@ -38,6 +39,11 @@ public class Activator implements BundleActivator {
 		if (config.getMHZ19B()) {
 			devices.add(new MHZ19B(config.getClientID()));
 			LOG.info("MH-Z19B installed.");
+		}
+
+		if (config.getPPD42NS()) {
+			devices.add(new PPD42NS(config.getClientID()));
+			LOG.info("PPD42NS installed.");
 		}
 
 		if (config.getOPCUA()) {
