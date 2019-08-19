@@ -30,30 +30,35 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		LOG.info("{} {} started.", ConfigParams.getName(), ConfigParams.getVersion());
-		if (config.getCC2650()) {
-			devices.add(new CC2650(config.getClientID()));
-			LOG.info("CC2650 installed.");
-		}
+		try {
+			LOG.info("{} {} started.", ConfigParams.getName(), ConfigParams.getVersion());
+			if (config.getCC2650()) {
+				devices.add(new CC2650(config.getClientID()));
+				LOG.info("CC2650 installed.");
+			}
 
-		if (config.getMHZ19B()) {
-			devices.add(new MHZ19B(config.getClientID()));
-			LOG.info("MH-Z19B installed.");
-		}
+			if (config.getMHZ19B()) {
+				devices.add(new MHZ19B(config.getClientID()));
+				LOG.info("MH-Z19B installed.");
+			}
 
-		if (config.getPPD42NS()) {
-			devices.add(new PPD42NS(config.getClientID()));
-			LOG.info("PPD42NS installed.");
-		}
+			if (config.getPPD42NS()) {
+				devices.add(new PPD42NS(config.getClientID()));
+				LOG.info("PPD42NS installed.");
+			}
 
-		if (config.getOPCUA()) {
-			devices.add(new OPCUA(config.getClientID()));
-			LOG.info("OPC-UA installed.");
-		}
+			if (config.getOPCUA()) {
+				devices.add(new OPCUA(config.getClientID()));
+				LOG.info("OPC-UA installed.");
+			}
 
-		for (IDevice device : devices) {
-			device.start();
-			LOG.info("{} started.", device.getClass().getSimpleName());
+			for (IDevice device : devices) {
+				device.start();
+				LOG.info("{} started.", device.getClass().getSimpleName());
+			}
+		} catch (Exception e) {
+			LOG.error("caught - {}", e.toString(), e);
+			context.getBundle(0).stop();
 		}
 	}
 

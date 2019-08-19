@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: osgi activator of rainy - a tiny tool for iot data collection and monitoring
 Bundle-SymbolicName: rainy-activator
-Bundle-Version: 0.1.4
+Bundle-Version: 0.1.5
 Automatic-Module-Name: rainy-activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: io.github.s5uishida.iot.rainy.device;version="[0.1.0,0.2.0)",
