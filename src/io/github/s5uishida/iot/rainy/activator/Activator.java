@@ -56,7 +56,7 @@ public class Activator implements BundleActivator {
 				device.start();
 				LOG.info("{} started.", device.getClass().getSimpleName());
 			}
-		} catch (Exception | Error e) {
+		} catch (Throwable e) {
 			LOG.error("caught - {}", e.toString(), e);
 			context.getBundle(0).stop();
 		}
