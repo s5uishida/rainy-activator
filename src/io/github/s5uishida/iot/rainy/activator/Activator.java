@@ -10,9 +10,11 @@ import org.slf4j.LoggerFactory;
 
 import io.github.s5uishida.iot.rainy.device.IDevice;
 import io.github.s5uishida.iot.rainy.device.cc2650.CC2650;
+import io.github.s5uishida.iot.rainy.device.hcsr501.HCSR501;
 import io.github.s5uishida.iot.rainy.device.mhz19b.MHZ19B;
 import io.github.s5uishida.iot.rainy.device.opcua.OPCUA;
 import io.github.s5uishida.iot.rainy.device.ppd42ns.PPD42NS;
+import io.github.s5uishida.iot.rainy.device.rcwl0516.RCWL0516;
 import io.github.s5uishida.iot.rainy.util.Config;
 import io.github.s5uishida.iot.rainy.util.ConfigParams;
 
@@ -45,6 +47,16 @@ public class Activator implements BundleActivator {
 			if (config.getPPD42NS()) {
 				devices.add(new PPD42NS(config.getClientID()));
 				LOG.info("PPD42NS installed.");
+			}
+
+			if (config.getRCWL0516()) {
+				devices.add(new RCWL0516(config.getClientID()));
+				LOG.info("RCWL-0516 installed.");
+			}
+
+			if (config.getHCSR501()) {
+				devices.add(new HCSR501(config.getClientID()));
+				LOG.info("HC-SR501 installed.");
 			}
 
 			if (config.getOPCUA()) {
