@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import io.github.s5uishida.iot.rainy.device.IDevice;
+import io.github.s5uishida.iot.rainy.device.bh1750fvi.BH1750FVI;
+import io.github.s5uishida.iot.rainy.device.bme280.BME280;
 import io.github.s5uishida.iot.rainy.device.cc2650.CC2650;
 import io.github.s5uishida.iot.rainy.device.hcsr501.HCSR501;
 import io.github.s5uishida.iot.rainy.device.mhz19b.MHZ19B;
@@ -37,6 +39,16 @@ public class Activator implements BundleActivator {
 			if (config.getCC2650()) {
 				devices.add(new CC2650(config.getClientID()));
 				LOG.info("CC2650 installed.");
+			}
+
+			if (config.getBME280()) {
+				devices.add(new BME280(config.getClientID()));
+				LOG.info("BME280 installed.");
+			}
+
+			if (config.getBH1750FVI()) {
+				devices.add(new BH1750FVI(config.getClientID()));
+				LOG.info("BH1750FVI installed.");
 			}
 
 			if (config.getMHZ19B()) {
